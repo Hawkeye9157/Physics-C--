@@ -1,5 +1,6 @@
 #include "ZaWorldo.h"
 #include "Body.h"
+#include <Collision.h>
 
 
 
@@ -39,12 +40,15 @@ Spring* World::CreateSpring(Body* a, Body* b, float restLength, float stiffness,
 void World::Step(float dt)
 {
     for (auto spring : m_springs) {
-
+        
     }
     for (auto body : m_bodies) {
         body->Step(dt);
         body->ClearForce();
     }
+    m_contacts.clear();
+    CreateContacts(m_bodies, m_contacts);
+    SeparateContacts(m_contacts);
 }
 
 void World::Draw(const Scene& scene)

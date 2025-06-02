@@ -1,6 +1,7 @@
 #pragma once
 #include "Body.h"
 #include "Spring.h"
+#include "Contact.h"
 #include <vector>
 #include <raylib.h>
 
@@ -8,6 +9,7 @@ class Scene;
 
 using bodies_t = std::vector<Body*>;
 using springs_t = std::vector<Spring*>;
+using contacts_t = std::vector<Contact*>;
 
 class World {
 public:
@@ -36,6 +38,7 @@ public:
 private:
 	bodies_t m_bodies;
 	springs_t m_springs;
+	contacts_t m_contacts;
 
 
 };
