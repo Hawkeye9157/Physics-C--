@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "scene.h"
+#include "aabb.h"
 
 struct Body {
 public:
@@ -29,6 +30,7 @@ public:
 		invMass = (type == Type::DYNAMIC && mass != 0) ? 1 / mass : 0;
 	}
 
+	AABB GetAABB() const { return AABB{ position, {size * 2,size * 2} }; }
 
 	void Step(float dt);
 	void Draw(const Scene& scene);
